@@ -4,11 +4,18 @@
  * for more information concerning the license and the contributors participating to this project.
  */
 
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Mvc.Client.Controllers {
-    public class HomeController : Controller {
+namespace Mvc.Client.Controllers
+{
+    public class HomeController : Controller
+    {
         [HttpGet("~/")]
         public ActionResult Index() => View();
+
+        [HttpGet("~/home")]
+        [Authorize]
+        public string Hello() => "Hello";
     }
 }
